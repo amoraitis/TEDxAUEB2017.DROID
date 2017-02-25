@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <ImageButton
+        android:src="@drawable/mosaic"
+        android:layout_width="match_parent"
+        android:background="@color/orange"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="0dp"
+        android:adjustViewBounds="true"
+        android:padding="0dp"
+        android:scaleType="centerInside"
+        android:layout_weight="1" />
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="1">
+        <ImageButton
+            android:background="@color/orange"
+            android:id="@+id/speakers"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_marginBottom="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:padding="0dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/spcube" />
+        <ImageButton
+            android:background="@color/orange"
+            android:id="@+id/program"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:padding="0dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/prcube" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="1">
+        <ImageButton
+            android:background="@color/orange"
+            android:id="@+id/venue"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:padding="0dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/vcube" />
+        <ImageButton
+            android:background="@color/orange"
+            android:id="@+id/sposnors"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:padding="0dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/spocube" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/icons_container"
+        android:orientation="horizontal"
+        android:layout_weight="1">
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:textSize="19sp"
+            android:layout_weight="1"
+            android:id="@+id/icons_fb"
+            android:text="@string/FontAwesomeFacebook" />
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:textSize="19sp"
+            android:layout_weight="1"
+            android:id="@+id/icons_Insta"
+            android:text="@string/FontAwesomeInstagram" />
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="19sp"
+            android:id="@+id/icons_Yt"
+            android:text="@string/FontAwesomeYoutube" />
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="19sp"
+            android:id="@+id/icons_Tw"
+            android:text="@string/FontAwesomeTwitter" />
+        <Button
+            android:textSize="19sp"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/icons_Li"
+            android:text="@string/FontAwesomeLinkedIn" />
+    </LinearLayout>
+</LinearLayout>
