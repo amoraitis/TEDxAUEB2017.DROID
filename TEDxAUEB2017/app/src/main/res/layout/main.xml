@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainMActivity"
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
     <ImageButton
-        android:src="@drawable/mosaic"
+        android:id="@+id/mosaic"
+        android:src="@mipmap/mosaic"
         android:layout_width="match_parent"
         android:background="@color/orange"
         android:layout_height="wrap_content"
@@ -23,6 +26,7 @@
         android:layout_weight="1">
         <ImageButton
             android:background="@color/orange"
+            android:src="@mipmap/spcube"
             android:id="@+id/speakers"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
@@ -33,11 +37,11 @@
             android:layout_weight="1"
             android:adjustViewBounds="true"
             android:padding="0dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/spcube" />
+            android:scaleType="fitCenter"/>
         <ImageButton
             android:background="@color/orange"
             android:id="@+id/program"
+            android:src="@mipmap/pcube"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginBottom="0dp"
@@ -47,8 +51,7 @@
             android:layout_weight="1"
             android:adjustViewBounds="true"
             android:padding="0dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/prcube" />
+            android:scaleType="fitCenter"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="fill_parent"
@@ -58,6 +61,7 @@
         <ImageButton
             android:background="@color/orange"
             android:id="@+id/venue"
+            android:src="@mipmap/vcube"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginBottom="0dp"
@@ -67,11 +71,11 @@
             android:layout_weight="1"
             android:adjustViewBounds="true"
             android:padding="0dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/vcube" />
+            android:scaleType="fitCenter"/>
         <ImageButton
             android:background="@color/orange"
-            android:id="@+id/sposnors"
+            android:src="@mipmap/spocube"
+            android:id="@+id/sponsors"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginBottom="0dp"
@@ -81,8 +85,7 @@
             android:layout_weight="1"
             android:adjustViewBounds="true"
             android:padding="0dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/spocube" />
+            android:scaleType="fitCenter"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="fill_parent"

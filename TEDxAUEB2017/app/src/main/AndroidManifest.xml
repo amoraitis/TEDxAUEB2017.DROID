@@ -3,16 +3,33 @@
     package="com.example.tedxaueb.tedxaueb2017">
 
     <application
+        android:largeHeap="true"
+        android:supportsRtl="true"
         android:allowBackup="true"
         android:label="@string/app_name"
-        android:supportsRtl="true">
-        <activity android:name=".MainActivity">
+        android:theme="@style/AppBaseTheme" >
+        <!-- Splash screen -->
+        <activity
+            android:name=".SplashActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Main activity -->
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/Base.Theme.AppCompat"
+            android:label="@string/app_name" >
+        </activity>
+        <activity android:name=".MainMActivity"
+            android:label="TEDxAUEB 2017"/>
     </application>
+
 
 </manifest>

@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="Mosaic">Mosaic</string>
-  <string name="Speakers">Speakers</string>
-  <string name="Program">Programme</string>
-  <string name="Venue">Venue</string>
-  <string name="Sponsors">Sponsors</string>
-  <string name="direct">Get directions</string> 
-  <string name="app_name">TEDxAUEB2017</string>
-  <string name="FontAwesomeFacebook">&#xf230;</string>
-  <string name="FontAwesomeInstagram">&#xf16d;</string>
-  <string name="FontAwesomeYoutube">&#xf167;</string>
-  <string name="FontAwesomeTwitter">&#xf099;</string>
-  <string name="FontAwesomeLinkedIn">&#xf0e1;</string>
-  <string name="FontAwesomeRight">&#xf124;</string>
-  <string name="facebook_app_id">622540064609891</string>
+    <string name="Mosaic">Mosaic</string>
+    <string name="Speakers">Speakers</string>
+    <string name="Program">Programme</string>
+    <string name="Venue">Venue</string>
+    <string name="Sponsors">Sponsors</string>
+    <string name="direct">Get directions</string>
+    <string name="app_name">TEDxAUEB2017</string>
+    <string name="FontAwesomeFacebook">&#xf230;</string>
+    <string name="FontAwesomeInstagram">&#xf16d;</string>
+    <string name="FontAwesomeYoutube">&#xf167;</string>
+    <string name="FontAwesomeTwitter">&#xf099;</string>
+    <string name="FontAwesomeLinkedIn">&#xf0e1;</string>
+    <string name="FontAwesomeRight">&#xf124;</string>
+    <string name="facebook_app_id">622540064609891</string>
 </resources>
