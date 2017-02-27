@@ -9,7 +9,7 @@
         android:layout_height="70dp"
         android:paddingLeft="10dp"
         android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true" />
+        android:layout_centerVertical="true"/>
     <TextView
         android:id="@+id/Title"
         android:layout_width="wrap_content"

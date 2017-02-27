@@ -1,132 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainMActivity"
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
     <ImageButton
-        android:id="@+id/mosaic"
-        android:src="@mipmap/mosaic"
-        android:layout_width="match_parent"
-        android:background="@color/orange"
+        android:layout_width="wrap_content"
+        android:background="@drawable/mosaic"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:layout_marginBottom="0dp"
         android:layout_marginLeft="0dp"
         android:layout_marginRight="0dp"
         android:layout_marginTop="0dp"
         android:adjustViewBounds="true"
-        android:padding="0dp"
-        android:scaleType="centerInside"
-        android:layout_weight="1" />
+        android:scaleType="fitCenter"/>
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:orientation="horizontal">
         <ImageButton
-            android:background="@color/orange"
-            android:src="@mipmap/spcube"
-            android:id="@+id/speakers"
+            android:id="@+id/speakersbtn"
+            android:background="#faaf54"
             android:layout_width="0dp"
-            android:layout_height="fill_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/spcube"
             android:layout_marginBottom="0dp"
+            android:layout_marginEnd="0dp"
             android:layout_marginLeft="0dp"
             android:layout_marginRight="0dp"
-            android:layout_marginTop="0dp"
-            android:layout_weight="1"
             android:adjustViewBounds="true"
             android:padding="0dp"
+            android:layout_weight="1"
             android:scaleType="fitCenter"/>
+
         <ImageButton
-            android:background="@color/orange"
-            android:id="@+id/program"
-            android:src="@mipmap/pcube"
+            android:background="#faaf54"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/prcube"
+            android:padding="0dp"
             android:layout_marginBottom="0dp"
+            android:layout_marginEnd="0dp"
             android:layout_marginLeft="0dp"
             android:layout_marginRight="0dp"
-            android:layout_marginTop="0dp"
-            android:layout_weight="1"
             android:adjustViewBounds="true"
-            android:padding="0dp"
+            android:layout_weight="1"
             android:scaleType="fitCenter"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:orientation="horizontal">
         <ImageButton
-            android:background="@color/orange"
-            android:id="@+id/venue"
-            android:src="@mipmap/vcube"
+            android:id="@+id/Venue"
+            android:background="#faaf54"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:src="@drawable/vcube"
             android:layout_marginBottom="0dp"
+            android:layout_marginEnd="0dp"
+            android:padding="0dp"
             android:layout_marginLeft="0dp"
             android:layout_marginRight="0dp"
-            android:layout_marginTop="0dp"
-            android:layout_weight="1"
             android:adjustViewBounds="true"
-            android:padding="0dp"
             android:scaleType="fitCenter"/>
         <ImageButton
-            android:background="@color/orange"
-            android:src="@mipmap/spocube"
-            android:id="@+id/sponsors"
+            android:background="#faaf54"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="0dp"
-            android:layout_marginLeft="0dp"
-            android:layout_marginRight="0dp"
-            android:layout_marginTop="0dp"
             android:layout_weight="1"
-            android:adjustViewBounds="true"
+            android:layout_height="wrap_content"
+            android:src="@drawable/spocube"
+            android:layout_marginBottom="0dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginLeft="0dp"
             android:padding="0dp"
+            android:layout_marginRight="0dp"
+            android:adjustViewBounds="true"
             android:scaleType="fitCenter"/>
     </LinearLayout>
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/icons_container"
         android:orientation="horizontal"
-        android:layout_weight="1">
+        android:id="@+id/socialicons">
         <Button
-            android:layout_width="fill_parent"
-            android:layout_height="match_parent"
-            android:textSize="19sp"
+            android:id="@+id/FacebookButton"
+            android:textColor="@color/FacebookBlue"
+            android:textSize="20sp"
             android:layout_weight="1"
-            android:id="@+id/icons_fb"
-            android:text="@string/FontAwesomeFacebook" />
+            android:background="@color/orange"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/FontAwesomeFacebook"/>
         <Button
-            android:layout_width="fill_parent"
-            android:layout_height="match_parent"
-            android:textSize="19sp"
+            android:id="@+id/InstagramButton"
+            android:textColor="@color/InstagramBlue"
             android:layout_weight="1"
-            android:id="@+id/icons_Insta"
-            android:text="@string/FontAwesomeInstagram" />
+            android:textSize="20sp"
+            android:background="@color/orange"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/FontAwesomeInstagram"/>
         <Button
-            android:layout_width="fill_parent"
-            android:layout_height="match_parent"
+            android:id="@+id/YoutubeButton"
+            android:textColor="@color/YoutubeRed"
             android:layout_weight="1"
-            android:textSize="19sp"
-            android:id="@+id/icons_Yt"
-            android:text="@string/FontAwesomeYoutube" />
+            android:textSize="20sp"
+            android:layout_width="0dp"
+            android:background="@color/orange"
+            android:layout_height="wrap_content"
+            android:text="@string/FontAwesomeYoutube"/>
         <Button
-            android:layout_width="fill_parent"
-            android:layout_height="match_parent"
+            android:id="@+id/TwitterButton"
+            android:textColor="@color/TwitterBlue"
             android:layout_weight="1"
-            android:textSize="19sp"
-            android:id="@+id/icons_Tw"
-            android:text="@string/FontAwesomeTwitter" />
+            android:textSize="20sp"
+            android:background="@color/orange"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/FontAwesomeTwitter"/>
         <Button
-            android:textSize="19sp"
-            android:layout_width="fill_parent"
-            android:layout_height="match_parent"
+            android:id="@+id/LinkedInButton"
+            android:textColor="@color/LinkedInBlue"
             android:layout_weight="1"
-            android:id="@+id/icons_Li"
-            android:text="@string/FontAwesomeLinkedIn" />
+            android:textSize="20sp"
+            android:background="@color/orange"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/FontAwesomeLinkedIn"/>
     </LinearLayout>
 </LinearLayout>

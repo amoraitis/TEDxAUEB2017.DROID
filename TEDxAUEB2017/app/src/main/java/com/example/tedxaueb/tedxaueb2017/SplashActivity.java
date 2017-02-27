@@ -1,14 +1,9 @@
 package com.example.tedxaueb.tedxaueb2017;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.graphics.*;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 
 public class SplashActivity extends AppCompatActivity {
     // Splash screen timer
