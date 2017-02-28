@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/orange">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:id="@+id/mosaicgif"
+        android:background="@color/orange"
+        android:layout_height="0dp"
+        android:layout_marginBottom="0dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginRight="1dp"
+        android:layout_marginTop="0dp"
+        android:adjustViewBounds="true"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        android:layout_weight="2" />
+    <TextView
+        android:text="@string/MosaicDescrTxt"
+        android:layout_width="match_parent"
+        android:background="@color/orange"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginRight="1dp"
+        android:layout_marginTop="0dp"
+        android:adjustViewBounds="true"
+        android:padding="0dp"
+        android:scaleType="center" />
+    <TextView
+        android:layout_width="match_parent"
+        android:id="@+id/mosaictxt"
+        android:background="@color/orange"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        android:layout_weight="1" />
+    <Button
+        android:text="Learn More"
+        android:id="@+id/lrnmore"
+        android:layout_width="match_parent"
+        android:background="@color/orange"
+        android:layout_height="0dp"
+        android:layout_marginBottom="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="0dp"
+        android:adjustViewBounds="true"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        android:layout_weight="1"/>
+</LinearLayout>

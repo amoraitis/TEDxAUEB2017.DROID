@@ -8,6 +8,7 @@
     android:layout_height="fill_parent">
     <ImageButton
         android:layout_width="wrap_content"
+        android:id="@+id/gomosaic"
         android:background="@drawable/mosaic"
         android:layout_height="wrap_content"
         android:layout_weight="1"

@@ -21,6 +21,13 @@ public class MainMActivity extends AppCompatActivity {
         setContentView(R.layout.main);
         Typeface iconFont = FontManager.getTypeface(getApplicationContext(), FontManager.FONTAWESOME);
         FontManager.markAsIconContainer(findViewById(R.id.socialicons),iconFont);
+        ((ImageButton)findViewById(R.id.gomosaic)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainMActivity.this, AboutMosaicActivity.class);
+                startActivity(i);
+            }
+        });
         ((ImageButton)findViewById(R.id.speakersbtn)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
