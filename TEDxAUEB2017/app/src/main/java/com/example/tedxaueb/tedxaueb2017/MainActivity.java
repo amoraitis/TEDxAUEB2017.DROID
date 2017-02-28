@@ -26,5 +26,12 @@ public class MainActivity extends Activity {
                 startActivity(i);
             }
         });
+        ((Button)findViewById(R.id.play)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent loginI = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(loginI);
+            }
+        });
     }
 }

@@ -80,14 +80,14 @@ public class MainMActivity extends AppCompatActivity {
         ((Button)findViewById(R.id.LinkedInButton)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent();
                 /*try {
                     getPackageManager().getPackageInfo("com.linkedin.android", 0);
                     intent = new Intent(Intent.ACTION_VIEW, Uri.parse("linkedin://profile/2802636"));
                 }catch (Exception e) {
 
                 }*/
-                intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.linkedin.com/company/tedxaueb"));
+                Intent liIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.linkedin.com/company/tedxaueb"));
+                startActivity(liIntent);
             }
         });
     }
