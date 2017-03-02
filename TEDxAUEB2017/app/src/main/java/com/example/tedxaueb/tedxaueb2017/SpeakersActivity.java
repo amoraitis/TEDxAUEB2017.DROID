@@ -1,15 +1,21 @@
 package com.example.tedxaueb.tedxaueb2017;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
-
+import java.io.Serializable;
+import java.util.LinkedList;
 import java.util.List;
 
-import Helpers.SpeakersListAdapter;
+import Helpers.HandleSpeakers;
+import Helpers.SpRecyclerViewAdapter;
 import Models.Speaker;
 
 /**
@@ -17,24 +23,45 @@ import Models.Speaker;
  */
 
 public class SpeakersActivity extends AppCompatActivity {
-    List<Speaker> speakers;
+    private RecyclerView mRecyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
+    private LinkedList<Speaker> myspeakers = (new HandleSpeakers()).getMyspeakers();
+    private static String LOG_TAG = "CardViewActivity";
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.speakers);
-        SpeakersParser gsp =new SpeakersParser();
-        speakers = gsp.getSpeakers();
-        final ListView listView = (ListView) findViewById(R.id.SpListView);
-        listView.setAdapter(new SpeakersListAdapter(this,speakers));
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+        mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
+        mRecyclerView.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mAdapter = new SpRecyclerViewAdapter(myspeakers);
+        mRecyclerView.setAdapter(mAdapter);
+
+        // Code to Add an item with default animation
+        //((MyRecyclerViewAdapter) mAdapter).addItem(obj, index);
+
+        // Code to remove an item with default animation
+        //((MyRecyclerViewAdapter) mAdapter).deleteItem(index);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        ((SpRecyclerViewAdapter) mAdapter).setOnItemClickListener(new SpRecyclerViewAdapter
+                .MyClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Object o =listView.getItemAtPosition(position);
-                Speaker speakerData = (Speaker)o;
-                Toast.makeText(SpeakersActivity.this,"Selected :"+" "+speakerData,Toast.LENGTH_LONG).show();
+            public void onItemClick(int position, View v) {
+                Speaker o = (Speaker)myspeakers.get(position);
+                Intent speaker = new Intent(SpeakersActivity.this,SpeakerActivity.class);
+                speaker.putExtra("Speaker", (Serializable) o);
+                startActivity(speaker);
             }
         });
-
     }
+
+
 
 }

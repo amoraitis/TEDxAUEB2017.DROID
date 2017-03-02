@@ -47,6 +47,8 @@
         <activity android:name=".AboutMosaicActivity"
             android:theme="@style/Base.Theme.AppCompat.Light"
             android:label="About Mosaic"/>
+        <activity android:name=".SpeakerActivity"
+            android:theme="@style/Base.Theme.AppCompat.Light"/>
     </application>
 
 
