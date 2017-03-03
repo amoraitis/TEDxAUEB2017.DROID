@@ -15,8 +15,25 @@
         android:layout_weight="1"/>
 
     <ImageView
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+        android:layout_gravity="center"
+        android:id="@+id/profpic"/>
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/profpic"
-        android:layout_weight="1"/>
+        android:orientation="horizontal"
+        android:id="@+id/spreadtheword"
+        android:layout_gravity="center">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/download"
+            android:text="@string/FontAwesomeDownload"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/share"
+            android:text="@string/FontAwesomeShare"/>
+    </LinearLayout>
 </LinearLayout>

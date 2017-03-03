@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.RectF;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -38,6 +39,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 
+import Helpers.FontManager;
 import Helpers.HttpRequest;
 import okhttp3.*;
 
@@ -58,8 +60,9 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Typeface iconFont = FontManager.getTypeface(getApplicationContext(), FontManager.FONTAWESOME);
+        FontManager.markAsIconContainer(findViewById(R.id.spreadtheword),iconFont);
         FacebookSdk.sdkInitialize(this);
-
         callbackManager = CallbackManager.Factory.create();
         setContentView(R.layout.loginlayout);
         loginButton = (LoginButton)findViewById(R.id.login_button);
@@ -74,8 +77,15 @@ public class LoginActivity extends AppCompatActivity {
                         .into(new Target() {
                             @Override
                             public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+                                Bitmap mosaicBanner=BitmapFactory.decodeResource(getResources(),R.drawable.bannerforprofilepic500);
+                                Bitmap bmOverlay = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), bitmap.getConfig());
+                                Canvas canvas = new Canvas(bmOverlay);
+                                canvas.drawBitmap(bitmap, new Matrix(), null);
+                                Toast.makeText(LoginActivity.this, "Width: "+mosaicBanner.getWidth(),
+                                        Toast.LENGTH_LONG).show();
+                                canvas.drawBitmap(mosaicBanner, 0.0f,bmOverlay.getHeight()-60, null);
+                                profpic.setImageBitmap(bmOverlay);
 
-                                profpic.setImageBitmap(bitmap);
                             }
 
                             @Override

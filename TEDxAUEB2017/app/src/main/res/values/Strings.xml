@@ -13,6 +13,8 @@
     <string name="FontAwesomeTwitter">&#xf099;</string>
     <string name="FontAwesomeLinkedIn">&#xf0e1;</string>
     <string name="FontAwesomeRight">&#xf124;</string>
+    <string name="FontAwesomeDownload">&#xf019;</string>
+    <string name="FontAwesomeShare">&#xf1e1;</string>
     <string name="facebook_app_id">622540064609891</string>
     <string name="MosaicDescrTxt">TEDxAUEB 2017: Mosaic</string>
 </resources>
