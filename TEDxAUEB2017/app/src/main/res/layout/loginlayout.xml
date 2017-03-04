@@ -3,6 +3,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/orange"
     android:minWidth="25px"
     android:minHeight="25px">
     <com.facebook.login.widget.LoginButton
@@ -15,6 +16,7 @@
         android:layout_weight="1"/>
 
     <ImageView
+        android:background="@color/white"
         android:layout_width="400dp"
         android:layout_height="400dp"
         android:layout_gravity="center"
@@ -23,16 +25,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
+        android:layout_marginTop="1dp"
         android:id="@+id/spreadtheword"
         android:layout_gravity="center">
+
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:id="@+id/download"
-            android:text="@string/FontAwesomeDownload"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="20sp"
+            android:background="@color/orange"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:id="@+id/share"
             android:text="@string/FontAwesomeShare"/>
     </LinearLayout>

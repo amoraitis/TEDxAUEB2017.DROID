@@ -10,12 +10,18 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.Typeface;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,11 +39,15 @@ import com.squareup.picasso.Target;
 
 import org.json.JSONObject;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.Date;
 
 import Helpers.FontManager;
 import Helpers.HttpRequest;
@@ -60,30 +70,32 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.loginlayout);
         Typeface iconFont = FontManager.getTypeface(getApplicationContext(), FontManager.FONTAWESOME);
         FontManager.markAsIconContainer(findViewById(R.id.spreadtheword),iconFont);
         FacebookSdk.sdkInitialize(this);
         callbackManager = CallbackManager.Factory.create();
-        setContentView(R.layout.loginlayout);
         loginButton = (LoginButton)findViewById(R.id.login_button);
         profpic=(ImageView) findViewById(R.id.profpic);
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
                 userid=loginResult.getAccessToken().getUserId();
-                Uri imageUri = Profile.getCurrentProfile().getProfilePictureUri(400, 400);
+                final Uri imageUri = Profile.getCurrentProfile().getProfilePictureUri(400, 400);
                 Picasso.with(LoginActivity.this)
                         .load(imageUri)
                         .into(new Target() {
                             @Override
                             public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+
                                 Bitmap mosaicBanner=BitmapFactory.decodeResource(getResources(),R.drawable.bannerforprofilepic500);
+                                Bitmap mosaicBannerScaled = Bitmap.createScaledBitmap(mosaicBanner,500,50,false);
                                 Bitmap bmOverlay = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), bitmap.getConfig());
                                 Canvas canvas = new Canvas(bmOverlay);
                                 canvas.drawBitmap(bitmap, new Matrix(), null);
-                                Toast.makeText(LoginActivity.this, "Width: "+mosaicBanner.getWidth(),
+                                Toast.makeText(LoginActivity.this, "Width: "+mosaicBannerScaled.getWidth(),
                                         Toast.LENGTH_LONG).show();
-                                canvas.drawBitmap(mosaicBanner, 0.0f,bmOverlay.getHeight()-60, null);
+                                canvas.drawBitmap(mosaicBannerScaled, 0.0f,bmOverlay.getHeight()-60, null);
                                 profpic.setImageBitmap(bmOverlay);
 
                             }
@@ -99,6 +111,55 @@ public class LoginActivity extends AppCompatActivity {
 
                             }
                         });
+                ((Button)findViewById(R.id.share)).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Bitmap bitmap;
+                        OutputStream output;
+
+                        // Retrieve the image from the res folder
+                        bitmap = ((BitmapDrawable)profpic.getDrawable()).getBitmap();
+
+                        // Find the SD Card path
+                        File filepath = Environment.getExternalStorageDirectory();
+
+                        // Create a new folder AndroidBegin in SD Card
+                        File dir = new File(filepath.getAbsolutePath() + "/Share Image Tutorial/");
+                        dir.mkdirs();
+
+                        // Create a name for the saved image
+                        File file = new File(dir, "sample_wallpaper.png");
+
+                        try {
+
+                            // Share Intent
+                            Intent share = new Intent(Intent.ACTION_SEND);
+
+                            // Type of file to share
+                            share.setType("image/jpeg");
+
+                            output = new FileOutputStream(file);
+
+                            // Compress into png format image from 0% - 100%
+                            bitmap.compress(Bitmap.CompressFormat.PNG, 100, output);
+                            output.flush();
+                            output.close();
+
+                            // Locate the image to Share
+                            Uri uri = Uri.fromFile(file);
+
+                            // Pass the image into an Intnet
+                            share.putExtra(Intent.EXTRA_STREAM, uri);
+
+                            // Show the social share chooser list
+                            startActivity(Intent.createChooser(share, "Share Image Tutorial"));
+
+                        } catch (Exception e) {
+                            // TODO Auto-generated catch block
+                            e.printStackTrace();
+                        }
+                    }
+                });
             }
 
             @Override

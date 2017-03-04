@@ -8,4 +8,5 @@
   <color name="YoutubeRed"> #bb0000</color>
   <color name="LinkedInBlue">#007bb5</color>
   <color name="InstagramBlue">#125688</color>
+  <color name="white">#ffffff</color>
 </resources>
