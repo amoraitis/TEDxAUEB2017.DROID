@@ -6,19 +6,23 @@
     android:minWidth="25px"
     android:minHeight="25px"
     tools:context=".MainActivity">
+
     <Button
         android:text="Skip"
-        android:gravity="bottom"
-        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cancel"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:background="@android:color/transparent" />
+
+    <com.facebook.login.widget.LoginButton
+        android:id="@+id/login_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="30dp"
         android:layout_alignParentBottom="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/cancel" />
-    <Button
-        android:text="Play"
-        android:layout_centerHorizontal="true"
-        android:layout_above="@+id/cancel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/play" />
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

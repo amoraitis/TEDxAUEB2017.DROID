@@ -51,6 +51,7 @@ import java.util.Date;
 
 import Helpers.FontManager;
 import Helpers.HttpRequest;
+import Models.Speaker;
 import okhttp3.*;
 
 import static android.graphics.Matrix.*;
@@ -63,27 +64,18 @@ import static android.widget.Toast.*;
  */
 
 public class LoginActivity extends AppCompatActivity {
-    LoginButton loginButton;
-    CallbackManager callbackManager;
     ImageView profpic;
-    String userid;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.loginlayout);
         Typeface iconFont = FontManager.getTypeface(getApplicationContext(), FontManager.FONTAWESOME);
         FontManager.markAsIconContainer(findViewById(R.id.spreadtheword),iconFont);
-        FacebookSdk.sdkInitialize(this);
-        callbackManager = CallbackManager.Factory.create();
-        loginButton = (LoginButton)findViewById(R.id.login_button);
         profpic=(ImageView) findViewById(R.id.profpic);
-        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-            @Override
-            public void onSuccess(LoginResult loginResult) {
-                userid=loginResult.getAccessToken().getUserId();
-                final Uri imageUri = Profile.getCurrentProfile().getProfilePictureUri(400, 400);
-                Picasso.with(LoginActivity.this)
-                        .load(imageUri)
+        Intent i = getIntent();
+        Uri profileURI = i.getParcelableExtra("ProfileURI");
+        Picasso.with(LoginActivity.this)
+                        .load(profileURI)
                         .into(new Target() {
                             @Override
                             public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
@@ -102,7 +94,7 @@ public class LoginActivity extends AppCompatActivity {
 
                             @Override
                             public void onBitmapFailed(Drawable errorDrawable) {
-                                Toast.makeText(LoginActivity.this, "eror dra attempt canceled.",
+                                Toast.makeText(LoginActivity.this, "error dra attempt canceled.",
                                         Toast.LENGTH_LONG).show();
                             }
 
@@ -121,14 +113,14 @@ public class LoginActivity extends AppCompatActivity {
                         bitmap = ((BitmapDrawable)profpic.getDrawable()).getBitmap();
 
                         // Find the SD Card path
-                        File filepath = Environment.getExternalStorageDirectory();
+                        File filepath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
 
                         // Create a new folder AndroidBegin in SD Card
-                        File dir = new File(filepath.getAbsolutePath() + "/Share Image Tutorial/");
+                        File dir = new File(filepath.getAbsolutePath() + "/TEDxAUEB2017/");
                         dir.mkdirs();
 
                         // Create a name for the saved image
-                        File file = new File(dir, "sample_wallpaper.png");
+                        File file = new File(dir, "myMosaic.png");
 
                         try {
 
@@ -152,7 +144,7 @@ public class LoginActivity extends AppCompatActivity {
                             share.putExtra(Intent.EXTRA_STREAM, uri);
 
                             // Show the social share chooser list
-                            startActivity(Intent.createChooser(share, "Share Image Tutorial"));
+                            startActivity(Intent.createChooser(share, "Share your Mosaic"));
 
                         } catch (Exception e) {
                             // TODO Auto-generated catch block
@@ -162,25 +154,4 @@ public class LoginActivity extends AppCompatActivity {
                 });
             }
 
-            @Override
-            public void onCancel() {
-                Toast.makeText(LoginActivity.this, "Login attempt canceled.",
-                        Toast.LENGTH_LONG).show();
-            }
-
-            @Override
-            public void onError(FacebookException e) {
-                Toast.makeText(LoginActivity.this, "Login attempt failed.",
-                        Toast.LENGTH_LONG).show();
-            }
-        });
-
     }
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-        callbackManager.onActivityResult(requestCode, resultCode, data);
-    }
-
-
-}
