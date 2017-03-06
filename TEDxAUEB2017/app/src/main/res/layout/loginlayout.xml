@@ -10,8 +10,10 @@
 
     <ImageView
         android:background="@color/white"
-        android:layout_width="400dp"
-        android:layout_height="400dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:adjustViewBounds="true"
         android:layout_gravity="center"
         android:id="@+id/profpic"/>
     <LinearLayout
@@ -24,7 +26,8 @@
 
         <Button
             android:layout_weight="1"
-            android:textSize="20sp"
+            android:textSize="25sp"
+            android:gravity="center"
             android:background="@color/orange"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

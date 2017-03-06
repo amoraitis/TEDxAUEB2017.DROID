@@ -21,6 +21,8 @@ import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
 import com.facebook.Profile;
+import com.facebook.appevents.AppEventsLogger;
+import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.microsoft.azure.mobile.MobileCenter;
@@ -41,18 +43,10 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        setContentView(R.layout.premain);
-        //MobileCenter.start(getApplication(), "fb3ef734-0989-4973-93ce-331f9e137395", Analytics.class, Crashes.class);
-        Button cancel = (Button) findViewById(R.id.cancel);
-        cancel.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, MainMActivity.class);
-                startActivity(i);
-            }
-        });
-        FacebookSdk.sdkInitialize(this);
+        FacebookSdk.sdkInitialize(getApplicationContext());
         callbackManager = CallbackManager.Factory.create();
+        setContentView(R.layout.premain);
+        MobileCenter.start(getApplication(), "fb3ef734-0989-4973-93ce-331f9e137395", Analytics.class, Crashes.class);
         loginButton = (LoginButton) findViewById(R.id.login_button);
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
@@ -61,6 +55,7 @@ public class MainActivity extends Activity {
                 final Uri profileUri = Profile.getCurrentProfile().getProfilePictureUri(400, 400);
                 Intent branding = new Intent(MainActivity.this,LoginActivity.class);
                 branding.putExtra("ProfileURI", profileUri);
+                LoginManager.getInstance().logOut();
                 startActivity(branding);
             }
 
@@ -76,10 +71,18 @@ public class MainActivity extends Activity {
                         Toast.LENGTH_LONG).show();
             }
         });
+        Button cancel = (Button) findViewById(R.id.cancel);
+        cancel.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, MainMActivity.class);
+                startActivity(i);
+            }
+        });
+
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
+        super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 

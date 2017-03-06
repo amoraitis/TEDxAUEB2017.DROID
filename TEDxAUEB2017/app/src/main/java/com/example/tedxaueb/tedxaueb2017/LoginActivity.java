@@ -94,7 +94,7 @@ public class LoginActivity extends AppCompatActivity {
 
                             @Override
                             public void onBitmapFailed(Drawable errorDrawable) {
-                                Toast.makeText(LoginActivity.this, "error dra attempt canceled.",
+                                Toast.makeText(LoginActivity.this, "Error, draw attempt canceled.",
                                         Toast.LENGTH_LONG).show();
                             }
 
@@ -144,12 +144,12 @@ public class LoginActivity extends AppCompatActivity {
                             share.putExtra(Intent.EXTRA_STREAM, uri);
 
                             // Show the social share chooser list
-                            startActivity(Intent.createChooser(share, "Share your Mosaic"));
+                            startActivity(Intent.createChooser(share, "Share your Mosaic via"));
 
                         } catch (Exception e) {
-                            // TODO Auto-generated catch block
                             e.printStackTrace();
                         }
+
                     }
                 });
             }
