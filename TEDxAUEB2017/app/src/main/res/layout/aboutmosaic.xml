@@ -39,7 +39,7 @@
         android:scaleType="fitCenter"
         android:layout_weight="1" />
     <Button
-        android:text="Learn More"
+        android:text="@string/LearnMore"
         android:id="@+id/lrnmore"
         android:layout_width="match_parent"
         android:background="@color/orange"

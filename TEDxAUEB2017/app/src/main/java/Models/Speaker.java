@@ -10,13 +10,13 @@ import java.io.Serializable;
 
 public class Speaker implements Serializable {
     private String name, shortBio, bio;
-    private int smallImg;
-    private Uri  largeImg;
-    public Speaker(String name, String shortBio,String bio, int smallImg){
+    private int smallImg,largeImg;
+    public Speaker(String name, String shortBio,String bio, int smallImg,int largeImg){
         this.name=name;
         this.shortBio=shortBio;
         this.bio=bio;
         this.smallImg=smallImg;
+        this.largeImg=largeImg;
     }
 
     public String getBio() {
@@ -31,5 +31,6 @@ public class Speaker implements Serializable {
     public int getSmallImg(){
         return smallImg;
     }
+    public int getLargeImg(){return largeImg; }
 
 }
