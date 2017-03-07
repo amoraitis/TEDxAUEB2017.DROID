@@ -23,7 +23,7 @@ public class AboutMosaicActivity extends AppCompatActivity {
         setContentView(R.layout.aboutmosaic);
         mosaicgif = (ImageView) findViewById(R.id.mosaicgif);
         GlideDrawableImageViewTarget mosaicViewTarget = new GlideDrawableImageViewTarget(mosaicgif);
-        Glide.with(this).load("http://2017.tedxaueb.com/wp-content/uploads/2017/02/gia-site-newest.gif").into(mosaicViewTarget);
+        Glide.with(this).load(R.drawable.giasitenewest).into(mosaicViewTarget);
         TextView aboutmtxt = (TextView)findViewById(R.id.mosaictxt);
         aboutmtxt.setText("\"A mosaic is a piece of art or image made from the assemblage of small pieces.\" But, could we verge on mosaic's meaning from different perspectives?\n" +
                 "\n" +

@@ -9,14 +9,15 @@ import java.io.Serializable;
  */
 
 public class Speaker implements Serializable {
-    private String name, shortBio, bio;
+    private String name, shortBio, bio, moreLink;
     private int smallImg,largeImg;
-    public Speaker(String name, String shortBio,String bio, int smallImg,int largeImg){
+    public Speaker(String name, String shortBio,String bio, int smallImg,int largeImg, String moreLink){
         this.name=name;
         this.shortBio=shortBio;
         this.bio=bio;
         this.smallImg=smallImg;
         this.largeImg=largeImg;
+        this.moreLink=moreLink;
     }
 
     public String getBio() {
@@ -32,5 +33,8 @@ public class Speaker implements Serializable {
         return smallImg;
     }
     public int getLargeImg(){return largeImg; }
+    public String getMoreLink(){
+        return moreLink;
+    }
 
 }
