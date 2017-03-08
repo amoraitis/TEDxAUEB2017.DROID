@@ -18,4 +18,6 @@
     <string name="facebook_app_id">622540064609891</string>
     <string name="MosaicDescrTxt">TEDxAUEB 2017: Mosaic</string>
     <string name="LearnMore">Learn More</string>
+    <string name="ReviewButton">Review</string>
+    <string name="WebsiteButton">Site</string>
 </resources>

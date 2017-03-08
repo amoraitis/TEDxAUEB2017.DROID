@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_favorite"
+        app:showAsAction="ifRoom"
+        android:title="@string/ReviewButton"
+        android:icon="@drawable/ic_favorite_black_48dp" />
+
+    <!-- Settings, should always be in the overflow -->
+    <item android:id="@+id/action_website"
+        android:title="@string/WebsiteButton"
+        android:icon="@drawable/ic_language_black_48dp"
+        app:showAsAction="ifRoom"/>
+</menu>
