@@ -20,4 +20,13 @@
     <string name="LearnMore">Learn More</string>
     <string name="ReviewButton">Review</string>
     <string name="WebsiteButton">Site</string>
+    <string name="Auspices">Under the auspices of AUEB</string>
+    <string name="Platinum">Platinum</string>
+    <string name="Gold">Gold</string>
+    <string name="Silver">Silver</string>
+    <string name="Friends">Friends</string>
+    <string name="Academic">Academic</string>
+    <string name="InKind">In Kind</string>
+    <string name="Community">Community</string>
+    <string name="Media">Media Partners</string>
 </resources>

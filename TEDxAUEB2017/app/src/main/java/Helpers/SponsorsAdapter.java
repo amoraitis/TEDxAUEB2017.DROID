@@ -19,9 +19,9 @@ public class SponsorsAdapter extends BaseAdapter {
     private Context mContext;
     private LinkedList<Sponsor> spoDataSet;
 
-    public SponsorsAdapter(Context c) {
+    public SponsorsAdapter(Context c,LinkedList<Sponsor> spoDataSet) {
         mContext = c;
-        spoDataSet=(new HandleSponsors()).getSponsors();
+        this.spoDataSet=spoDataSet;
     }
 
     public int getCount() {
@@ -55,4 +55,5 @@ public class SponsorsAdapter extends BaseAdapter {
         }
             return imageView;
     }
+
 }

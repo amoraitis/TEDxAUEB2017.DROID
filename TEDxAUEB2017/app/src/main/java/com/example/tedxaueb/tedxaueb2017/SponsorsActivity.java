@@ -2,6 +2,7 @@ package com.example.tedxaueb.tedxaueb2017;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
@@ -19,7 +20,7 @@ public class SponsorsActivity extends AppCompatActivity {
         setContentView(R.layout.sponsors);
 
         GridView gridview = (GridView) findViewById(R.id.grid);
-        gridview.setAdapter(new SponsorsAdapter(this));
+        gridview.setAdapter(new SponsorsAdapter(this,(new Helpers.HandleSponsors()).getSponsors()));
 
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
@@ -28,5 +29,13 @@ public class SponsorsActivity extends AppCompatActivity {
                         Toast.LENGTH_SHORT).show();
             }
         });
+        //avoid nested scrolls
+        gridview.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return event.getAction()==MotionEvent.ACTION_MOVE;
+            }
+        });
     }
+
 }

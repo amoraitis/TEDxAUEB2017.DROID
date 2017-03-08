@@ -4,6 +4,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <application
         android:largeHeap="true"
         android:supportsRtl="true"
@@ -51,6 +52,9 @@
             android:theme="@style/Base.Theme.AppCompat.Light"
             android:label="About Mosaic"/>
         <activity android:name=".SpeakerActivity"
+            android:theme="@style/Base.Theme.AppCompat.Light"/>
+        <activity android:name=".SponsorsActivity"
+            android:label="@string/Sponsors"
             android:theme="@style/Base.Theme.AppCompat.Light"/>
     </application>
 

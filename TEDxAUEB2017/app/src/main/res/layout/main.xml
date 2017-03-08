@@ -72,6 +72,7 @@
         <ImageButton
             android:background="#faaf54"
             android:layout_width="0dp"
+            android:id="@+id/spocube"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:src="@drawable/spocube"
