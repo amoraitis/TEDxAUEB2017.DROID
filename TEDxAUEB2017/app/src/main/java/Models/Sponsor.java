@@ -5,13 +5,13 @@ package Models;
  */
 
 public class Sponsor {
-    private int image;
+    private String image;
     private String site;
-    public Sponsor(int image, String site){
+    public Sponsor(String image, String site){
         this.image=image;
         this.site=site;
     }
-    public int getImage(){
+    public String getImage(){
         return image;
     }
     public String getSite(){

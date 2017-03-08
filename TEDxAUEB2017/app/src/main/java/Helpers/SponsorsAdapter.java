@@ -7,6 +7,10 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
+import com.example.tedxaueb.tedxaueb2017.R;
+
 import java.util.LinkedList;
 
 import Models.Sponsor;
@@ -48,12 +52,9 @@ public class SponsorsAdapter extends BaseAdapter {
         } else {
             imageView = (ImageView) convertView;
         }
-        try {
-            imageView.setImageResource(spoDataSet.get(position).getImage());
-        }catch (Exception e){
-
-        }
-            return imageView;
+        GlideDrawableImageViewTarget sponsorViewTarget = new GlideDrawableImageViewTarget(imageView);
+        Glide.with(this.mContext).load(spoDataSet.get(position).getImage()).into(sponsorViewTarget);
+        return imageView;
     }
 
 }
