@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ListView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".SponsorsActivity"
-    android:layout_width="fill_parent"
+<android.support.v4.widget.NestedScrollView
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    >
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".SponsorsActivity">
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:scrollbars="vertical"
+    android:isScrollContainer="true"    >
     <TextView
         android:text="@string/Auspices"
         android:background="@color/orange"
@@ -18,7 +23,7 @@
         android:id="@+id/auspices"
         android:layout_width="match_parent"
         android:background="@color/orange"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="0dp"
         android:layout_marginLeft="0dp"
         android:layout_marginRight="0dp"
@@ -35,11 +40,12 @@
         android:textAlignment="center"
         android:textSize="18sp"
         android:textColor="@color/black" />
-    <GridView
+    <Helpers.ExpandableHeightGridView
         android:id="@+id/platinumGrid"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:numColumns="2"
+        android:isScrollContainer="false"
         android:verticalSpacing="10dp"
         android:horizontalSpacing="10dp"
         />
@@ -52,12 +58,13 @@
         android:textAlignment="center"
         android:textSize="18sp"
         android:textColor="@color/black" />
-    <GridView
+    <Helpers.ExpandableHeightGridView
         android:id="@+id/goldGrid"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:numColumns="2"
         android:verticalSpacing="10dp"
+        android:isScrollContainer="false"
         android:horizontalSpacing="10dp"
         />
     <TextView
@@ -69,11 +76,12 @@
         android:textAlignment="center"
         android:textSize="18sp"
         android:textColor="@color/black" />
-    <GridView
+    <Helpers.ExpandableHeightGridView
         android:id="@+id/silverGrid"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:numColumns="2"
+        android:isScrollContainer="false"
         android:verticalSpacing="10dp"
         android:horizontalSpacing="10dp"
         />
@@ -86,11 +94,12 @@
         android:textAlignment="center"
         android:textSize="18sp"
         android:textColor="@color/black" />
-    <GridView
+    <Helpers.ExpandableHeightGridView
         android:id="@+id/friendsGrid"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:numColumns="2"
+        android:isScrollContainer="false"
         android:verticalSpacing="10dp"
         android:horizontalSpacing="10dp"
         />
@@ -105,9 +114,9 @@
         android:textColor="@color/black" />
     <ImageView
         android:id="@+id/academic"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:background="@color/orange"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="0dp"
         android:layout_marginLeft="0dp"
         android:layout_marginRight="0dp"
@@ -124,11 +133,12 @@
         android:textAlignment="center"
         android:textSize="18sp"
         android:textColor="@color/black" />
-    <GridView
+    <Helpers.ExpandableHeightGridView
         android:id="@+id/inkindGrid"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:numColumns="2"
+        android:isScrollContainer="false"
         android:verticalSpacing="10dp"
         android:horizontalSpacing="10dp"
         />
@@ -141,12 +151,13 @@
         android:textAlignment="center"
         android:textSize="18sp"
         android:textColor="@color/black" />
-    <GridView
+    <Helpers.ExpandableHeightGridView
         android:id="@+id/communityGrid"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:numColumns="2"
         android:verticalSpacing="10dp"
+        android:isScrollContainer="false"
         android:horizontalSpacing="10dp"
         />
     <TextView
@@ -158,12 +169,14 @@
         android:textAlignment="center"
         android:textSize="18sp"
         android:textColor="@color/black" />
-    <GridView
+    <Helpers.ExpandableHeightGridView
         android:id="@+id/mediaGrid"
-        android:layout_width="fill_parent"
+        android:isScrollContainer="false"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:numColumns="2"
         android:verticalSpacing="10dp"
         android:horizontalSpacing="10dp"
         />
-</ListView>
+</LinearLayout>
+    </android.support.v4.widget.NestedScrollView>

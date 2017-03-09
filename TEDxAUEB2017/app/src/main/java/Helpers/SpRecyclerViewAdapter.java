@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.tedxaueb.tedxaueb2017.R;
+import com.tedxaueb.tedxaueb2017.R;
 
 import java.util.LinkedList;
 

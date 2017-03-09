@@ -9,7 +9,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
-import com.example.tedxaueb.tedxaueb2017.R;
+import com.tedxaueb.tedxaueb2017.R;
 
 import java.util.LinkedList;
 

@@ -1,6 +1,6 @@
 package Helpers;
 
-import com.example.tedxaueb.tedxaueb2017.R;
+import com.tedxaueb.tedxaueb2017.R;
 
 import java.util.LinkedList;
 

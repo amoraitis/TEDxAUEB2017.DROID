@@ -2,7 +2,7 @@ package Helpers;
 
 import android.support.annotation.NonNull;
 
-import com.example.tedxaueb.tedxaueb2017.R;
+import com.tedxaueb.tedxaueb2017.R;
 
 import java.util.Collection;
 import java.util.Iterator;
