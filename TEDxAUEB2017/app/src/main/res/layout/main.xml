@@ -8,13 +8,13 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
     <ImageButton
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:id="@+id/gomosaic"
         android:background="@drawable/mosaic"
-        android:layout_weight="1"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
-        android:scaleType="centerCrop"
+        android:layout_weight="3"
+        android:scaleType="centerInside"
         android:cropToPadding="true" />
     <LinearLayout
         android:layout_width="fill_parent"
@@ -92,7 +92,7 @@
         <Button
             android:id="@+id/FacebookButton"
             android:textColor="@color/FacebookBlue"
-            android:textSize="20sp"
+            android:textSize="24sp"
             android:layout_weight="1"
             android:background="@color/orange"
             android:layout_width="0dp"
@@ -102,16 +102,17 @@
             android:id="@+id/InstagramButton"
             android:textColor="@color/InstagramBlue"
             android:layout_weight="1"
-            android:textSize="20sp"
+            android:textSize="24sp"
+            android:text="@string/FontAwesomeInstagram"
             android:background="@color/orange"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/FontAwesomeInstagram"/>
+            android:src="@drawable/instagraml"/>
         <Button
             android:id="@+id/YoutubeButton"
             android:textColor="@color/YoutubeRed"
             android:layout_weight="1"
-            android:textSize="20sp"
+            android:textSize="24sp"
             android:layout_width="0dp"
             android:background="@color/orange"
             android:layout_height="wrap_content"
@@ -120,7 +121,7 @@
             android:id="@+id/TwitterButton"
             android:textColor="@color/TwitterBlue"
             android:layout_weight="1"
-            android:textSize="20sp"
+            android:textSize="24sp"
             android:background="@color/orange"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -129,7 +130,7 @@
             android:id="@+id/LinkedInButton"
             android:textColor="@color/LinkedInBlue"
             android:layout_weight="1"
-            android:textSize="20sp"
+            android:textSize="24sp"
             android:background="@color/orange"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

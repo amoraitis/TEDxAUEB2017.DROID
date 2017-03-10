@@ -3,19 +3,14 @@ package com.tedxaueb.tedxaueb2017;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
-
-import java.util.LinkedList;
 
 import Helpers.ExpandableHeightGridView;
 import Helpers.HandleSponsors;

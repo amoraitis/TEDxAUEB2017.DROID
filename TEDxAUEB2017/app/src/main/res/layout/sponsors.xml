@@ -10,15 +10,15 @@
     android:orientation="vertical"
     android:scrollbars="vertical"
     android:isScrollContainer="true"    >
+
     <TextView
         android:text="@string/Auspices"
         android:background="@color/orange"
         android:layout_width="fill_parent"
         android:gravity="center"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:textSize="18sp"
-        android:textColor="@color/black"/>
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
     <ImageView
         android:id="@+id/auspices"
         android:layout_width="match_parent"
@@ -37,17 +37,15 @@
         android:layout_width="fill_parent"
         android:gravity="center"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:textSize="18sp"
-        android:textColor="@color/black" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"  />
     <Helpers.ExpandableHeightGridView
         android:id="@+id/platinumGrid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:numColumns="2"
         android:isScrollContainer="false"
-        android:verticalSpacing="10dp"
-        android:horizontalSpacing="10dp"
+        android:verticalSpacing="3dp"
+        android:horizontalSpacing="3dp"
         />
     <TextView
         android:text="@string/Gold"
@@ -55,17 +53,15 @@
         android:layout_width="fill_parent"
         android:gravity="center"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:textSize="18sp"
-        android:textColor="@color/black" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"  />
     <Helpers.ExpandableHeightGridView
         android:id="@+id/goldGrid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:numColumns="2"
-        android:verticalSpacing="10dp"
+        android:verticalSpacing="3dp"
         android:isScrollContainer="false"
-        android:horizontalSpacing="10dp"
+        android:horizontalSpacing="3dp"
         />
     <TextView
         android:text="@string/Silver"
@@ -75,15 +71,16 @@
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:textSize="18sp"
-        android:textColor="@color/black" />
+        android:textColor="@color/black"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
     <Helpers.ExpandableHeightGridView
         android:id="@+id/silverGrid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:numColumns="2"
+        android:numColumns="3"
         android:isScrollContainer="false"
-        android:verticalSpacing="10dp"
-        android:horizontalSpacing="10dp"
+        android:verticalSpacing="3dp"
+        android:horizontalSpacing="3dp"
         />
     <TextView
         android:text="@string/Friends"
@@ -93,15 +90,16 @@
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:textSize="18sp"
-        android:textColor="@color/black" />
+        android:textColor="@color/black"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
     <Helpers.ExpandableHeightGridView
         android:id="@+id/friendsGrid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:numColumns="2"
+        android:numColumns="3"
         android:isScrollContainer="false"
-        android:verticalSpacing="10dp"
-        android:horizontalSpacing="10dp"
+        android:verticalSpacing="3dp"
+        android:horizontalSpacing="3dp"
         />
     <TextView
         android:text="@string/Academic"
@@ -111,7 +109,8 @@
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:textSize="18sp"
-        android:textColor="@color/black" />
+        android:textColor="@color/black"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
     <ImageView
         android:id="@+id/academic"
         android:layout_width="wrap_content"
@@ -132,15 +131,16 @@
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:textSize="18sp"
-        android:textColor="@color/black" />
+        android:textColor="@color/black"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
     <Helpers.ExpandableHeightGridView
         android:id="@+id/inkindGrid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:numColumns="2"
+        android:numColumns="3"
         android:isScrollContainer="false"
-        android:verticalSpacing="10dp"
-        android:horizontalSpacing="10dp"
+        android:verticalSpacing="3dp"
+        android:horizontalSpacing="3dp"
         />
     <TextView
         android:text="@string/Community"
@@ -150,15 +150,16 @@
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:textSize="18sp"
-        android:textColor="@color/black" />
+        android:textColor="@color/black"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
     <Helpers.ExpandableHeightGridView
         android:id="@+id/communityGrid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:numColumns="2"
-        android:verticalSpacing="10dp"
+        android:numColumns="3"
+        android:verticalSpacing="3dp"
         android:isScrollContainer="false"
-        android:horizontalSpacing="10dp"
+        android:horizontalSpacing="3dp"
         />
     <TextView
         android:text="@string/Media"
@@ -168,15 +169,17 @@
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:textSize="18sp"
-        android:textColor="@color/black" />
+        android:textColor="@color/black"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
     <Helpers.ExpandableHeightGridView
+
         android:id="@+id/mediaGrid"
         android:isScrollContainer="false"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:numColumns="2"
-        android:verticalSpacing="10dp"
-        android:horizontalSpacing="10dp"
+        android:numColumns="3"
+        android:verticalSpacing="3dp"
+        android:horizontalSpacing="3dp"
         />
 </LinearLayout>
     </android.support.v4.widget.NestedScrollView>

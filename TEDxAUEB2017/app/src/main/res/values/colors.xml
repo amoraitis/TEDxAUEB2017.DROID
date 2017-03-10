@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <resources>
-  <color name="red">#ffff0000</color>
+  <color name="red">#ff0000</color>
   <color name="orange">#faaf54</color>
   <color name="black">#000000</color>
   <color name="FacebookBlue">#3b5998</color>
   <color name="TwitterBlue">#55acee</color>
   <color name="YoutubeRed"> #bb0000</color>
   <color name="LinkedInBlue">#007bb5</color>
-  <color name="InstagramBlue">#125688</color>
+  <color name="InstagramBlue">#cd486b</color>
   <color name="white">#ffffff</color>
 </resources>

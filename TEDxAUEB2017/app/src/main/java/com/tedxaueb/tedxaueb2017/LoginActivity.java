@@ -1,63 +1,33 @@
 package com.tedxaueb.tedxaueb2017;
 
 import android.content.Intent;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Matrix;
-import android.graphics.Paint;
-import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.provider.MediaStore;
+import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import com.facebook.CallbackManager;
-import com.facebook.FacebookCallback;
-import com.facebook.FacebookException;
-import com.facebook.FacebookSdk;
-import com.facebook.GraphRequest;
-import com.facebook.GraphResponse;
-import com.facebook.Profile;
-import com.facebook.login.*;
-import com.facebook.login.widget.LoginButton;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
-
-import org.json.JSONObject;
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
-import java.io.UnsupportedEncodingException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLEncoder;
-import java.util.Date;
+import java.util.logging.Logger;
 
 import Helpers.FontManager;
-import Helpers.HttpRequest;
-import Models.Speaker;
-import okhttp3.*;
 
-import static android.graphics.Matrix.*;
-import static android.graphics.Matrix.ScaleToFit.*;
-import static android.provider.UserDictionary.Words.APP_ID;
-import static android.widget.Toast.*;
+import static com.microsoft.azure.mobile.crashes.Crashes.LOG_TAG;
 
 /**
  * Created by tasos on 2/28/2017.
@@ -65,6 +35,7 @@ import static android.widget.Toast.*;
 
 public class LoginActivity extends AppCompatActivity {
     ImageView profpic;
+    Bitmap bmOverlay;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,6 +45,8 @@ public class LoginActivity extends AppCompatActivity {
         profpic=(ImageView) findViewById(R.id.profpic);
         Intent i = getIntent();
         Uri profileURI = i.getParcelableExtra("ProfileURI");
+        final Button share = (Button)findViewById(R.id.share);
+        share.setVisibility(View.GONE);
         Picasso.with(LoginActivity.this)
                         .load(profileURI)
                         .into(new Target() {
@@ -82,14 +55,14 @@ public class LoginActivity extends AppCompatActivity {
 
                                 Bitmap mosaicBanner=BitmapFactory.decodeResource(getResources(),R.drawable.bannerforprofilepic500);
                                 Bitmap mosaicBannerScaled = Bitmap.createScaledBitmap(mosaicBanner,500,50,false);
-                                Bitmap bmOverlay = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), bitmap.getConfig());
+                                bmOverlay = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), bitmap.getConfig());
                                 Canvas canvas = new Canvas(bmOverlay);
                                 canvas.drawBitmap(bitmap, new Matrix(), null);
                                 Toast.makeText(LoginActivity.this, "Width: "+mosaicBannerScaled.getWidth(),
                                         Toast.LENGTH_LONG).show();
                                 canvas.drawBitmap(mosaicBannerScaled, 0.0f,bmOverlay.getHeight()-60, null);
                                 profpic.setImageBitmap(bmOverlay);
-
+                                share.setVisibility(View.VISIBLE);
                             }
 
                             @Override
@@ -103,15 +76,12 @@ public class LoginActivity extends AppCompatActivity {
 
                             }
                         });
-                ((Button)findViewById(R.id.share)).setOnClickListener(new View.OnClickListener() {
+                ((Button) findViewById(R.id.share)).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Bitmap bitmap;
-                        OutputStream output;
 
-                        // Retrieve the image from the res folder
-                        bitmap = ((BitmapDrawable)profpic.getDrawable()).getBitmap();
-
+                        FileOutputStream output;
+                        Bitmap bitmap = ((BitmapDrawable) profpic.getDrawable()).getBitmap();
                         // Find the SD Card path
                         File filepath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
 
@@ -123,12 +93,13 @@ public class LoginActivity extends AppCompatActivity {
                         File file = new File(dir, "myMosaic.png");
 
                         try {
-
+                            if(!file.exists())
+                                Log.e(LOG_TAG,"file not exists");
                             // Share Intent
                             Intent share = new Intent(Intent.ACTION_SEND);
 
                             // Type of file to share
-                            share.setType("image/jpeg");
+                            share.setType("image/png");
 
                             output = new FileOutputStream(file);
 
@@ -144,7 +115,7 @@ public class LoginActivity extends AppCompatActivity {
                             share.putExtra(Intent.EXTRA_STREAM, uri);
 
                             // Show the social share chooser list
-                            startActivity(Intent.createChooser(share, "Share your Mosaic via"));
+                            startActivity(Intent.createChooser(share, "Share your Mosaic with"));
 
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -153,5 +124,4 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 });
             }
-
     }

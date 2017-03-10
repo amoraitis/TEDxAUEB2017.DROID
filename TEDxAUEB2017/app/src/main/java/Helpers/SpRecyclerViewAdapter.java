@@ -23,18 +23,20 @@ public class SpRecyclerViewAdapter extends RecyclerView.Adapter<SpRecyclerViewAd
     private LinkedList<Speaker> mDataset;
     private static MyClickListener myClickListener;
 
-    public static class DataObjectHolder extends RecyclerView.ViewHolder
+    static class DataObjectHolder extends RecyclerView.ViewHolder
             implements View
             .OnClickListener {
         TextView label;
         TextView dateTime;
+        TextView whatis;
         ImageView thumbnail;
 
-        public DataObjectHolder(View itemView) {
+        DataObjectHolder(View itemView) {
             super(itemView);
             label = (TextView) itemView.findViewById(R.id.Title);
             dateTime = (TextView) itemView.findViewById(R.id.Description);
             thumbnail=(ImageView)itemView.findViewById(R.id.Thumbnail);
+            whatis = (TextView)itemView.findViewById(R.id.whatis);
             Log.i(LOG_TAG, "Adding Listener");
             itemView.setOnClickListener(this);
         }
@@ -46,7 +48,7 @@ public class SpRecyclerViewAdapter extends RecyclerView.Adapter<SpRecyclerViewAd
     }
 
     public void setOnItemClickListener(MyClickListener myClickListener) {
-        this.myClickListener = myClickListener;
+        SpRecyclerViewAdapter.myClickListener = myClickListener;
     }
 
     public SpRecyclerViewAdapter(LinkedList<Speaker> myDataset) {
@@ -58,15 +60,14 @@ public class SpRecyclerViewAdapter extends RecyclerView.Adapter<SpRecyclerViewAd
                                                int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.splistitemrow, parent, false);
-
-        DataObjectHolder dataObjectHolder = new DataObjectHolder(view);
-        return dataObjectHolder;
+        return new DataObjectHolder(view);
     }
 
     @Override
     public void onBindViewHolder(DataObjectHolder holder, int position) {
         holder.label.setText(mDataset.get(position).getName());
         holder.dateTime.setText(mDataset.get(position).getShortBio());
+        holder.whatis.setText(mDataset.get(position).getWhatis());
         holder.thumbnail.setImageResource(mDataset.get(position).getSmallImg());
     }
 
@@ -86,6 +87,6 @@ public class SpRecyclerViewAdapter extends RecyclerView.Adapter<SpRecyclerViewAd
     }
 
     public interface MyClickListener {
-        public void onItemClick(int position, View v);
+        void onItemClick(int position, View v);
     }
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:provider="http://schemas.android.com/apk/res-auto"
     package="com.tedxaueb.tedxaueb2017">
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -28,15 +29,20 @@
         <!-- Main activity -->
         <activity
             android:name=".MainActivity"
-            android:theme="@style/Base.Theme.AppCompat.Light"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="@string/fb_login_protocol_scheme" />
+            </intent-filter>
         </activity>
         <activity android:name=".MainMActivity"
             android:theme="@style/Base.Theme.AppCompat.Light"
             android:label="TEDxAUEB 2017">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-
             </intent-filter>
         </activity>
         <activity android:name=".SpeakersActivity"
@@ -46,7 +52,7 @@
             android:theme="@style/Base.Theme.AppCompat.Light"
             android:label="@string/Venue"/>
         <activity android:name=".LoginActivity"
-            android:theme="@style/Base.Theme.AppCompat.Light"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:label="Login"/>
         <activity android:name=".AboutMosaicActivity"
             android:theme="@style/Base.Theme.AppCompat.Light"
@@ -56,6 +62,15 @@
         <activity android:name=".SponsorsActivity"
             android:label="@string/Sponsors"
             android:theme="@style/Base.Theme.AppCompat.Light"/>
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.tedxaueb.tedxaueb2017.fileprovider"
+            android:grantUriPermissions="true"
+            android:exported="false">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/filepaths" />
+        </provider>
     </application>
 
 
