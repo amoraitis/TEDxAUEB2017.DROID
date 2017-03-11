@@ -7,6 +7,14 @@
     android:minWidth="25px"
     android:minHeight="25px">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/inspire"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:text="@string/ShareText"
+        android:textAlignment="center"
+        android:textStyle="normal|bold" />
 
     <ImageView
         android:background="@color/white"
@@ -16,9 +24,18 @@
         android:adjustViewBounds="true"
         android:layout_gravity="center"
         android:id="@+id/profpic"/>
+
+    <TextView
+        android:text="@string/HelpingShare"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView4"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textAlignment="center" />
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="1dp"
         android:id="@+id/spreadtheword"
@@ -26,7 +43,7 @@
 
         <Button
             android:layout_weight="1"
-            android:textSize="25sp"
+            android:textSize="30sp"
             android:gravity="center"
             android:background="@color/orange"
             android:layout_width="0dp"
@@ -34,4 +51,14 @@
             android:id="@+id/share"
             android:text="@string/FontAwesomeShare"/>
     </LinearLayout>
+
+    <TextView
+            android:text="@string/Disclaimer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView5"
+            android:layout_weight="1"
+        android:textAlignment="center" />
+
+
 </LinearLayout>

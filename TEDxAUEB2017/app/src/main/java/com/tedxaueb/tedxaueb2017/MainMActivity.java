@@ -61,6 +61,13 @@ public class MainMActivity extends AppCompatActivity {
                 }
             }
         });
+        ((ImageButton)findViewById(R.id.programbtn)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainMActivity.this,ProgramActivity.class);
+                startActivity(i);
+            }
+        });
 
         ((Button)findViewById(R.id.FacebookButton)).setOnClickListener(new View.OnClickListener() {
             @Override

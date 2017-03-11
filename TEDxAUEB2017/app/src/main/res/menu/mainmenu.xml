@@ -5,7 +5,7 @@
         android:id="@+id/action_favorite"
         app:showAsAction="ifRoom"
         android:title="@string/ReviewButton"
-        android:icon="@drawable/ic_favorite_black_48dp" />
+        android:icon="@drawable/ic_star_black_48dp" />
 
     <!-- Settings, should always be in the overflow -->
     <item android:id="@+id/action_website"

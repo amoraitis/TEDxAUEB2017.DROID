@@ -23,7 +23,7 @@ import Models.Sponsor;
 
 public class SponsorsActivity extends AppCompatActivity {
     ImageView auspices, academic;
-    ExpandableHeightGridView platinumGrid, goldGrid, silverGrid,friendsGrid,inkindGrid,mediaGrid,communityGrid;
+    ExpandableHeightGridView platinumGrid, goldGrid, silverGrid,friendsGrid,inkindGrid, workshopsGrid,mediaGrid,communityGrid;
     HandleSponsors handlingLikeABoss;
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +37,7 @@ public class SponsorsActivity extends AppCompatActivity {
         friendsGrid = (ExpandableHeightGridView ) findViewById(R.id.friendsGrid);
         inkindGrid = (ExpandableHeightGridView) findViewById(R.id.inkindGrid);
         communityGrid=(ExpandableHeightGridView)findViewById(R.id.communityGrid);
+        workshopsGrid=(ExpandableHeightGridView)findViewById(R.id.workshopsGrid) ;
         mediaGrid = (ExpandableHeightGridView) findViewById(R.id.mediaGrid);
         setAdaptersAndSingles();
         setOnClickListeners();
@@ -70,6 +71,7 @@ public class SponsorsActivity extends AppCompatActivity {
         friendsGrid.setAdapter(new SponsorsAdapter(this,handlingLikeABoss.getFriends()));
         inkindGrid.setAdapter(new SponsorsAdapter(this,handlingLikeABoss.getInkind()));
         communityGrid.setAdapter(new SponsorsAdapter(this,handlingLikeABoss.getCommunity()));
+        workshopsGrid.setAdapter(new SponsorsAdapter(this,handlingLikeABoss.getWorkshops()));
         mediaGrid.setAdapter(new SponsorsAdapter(this,handlingLikeABoss.getMedia()));
         platinumGrid.setExpanded(true);
         goldGrid.setExpanded(true);
@@ -77,6 +79,7 @@ public class SponsorsActivity extends AppCompatActivity {
         friendsGrid.setExpanded(true);
         inkindGrid.setExpanded(true);
         communityGrid.setExpanded(true);
+        workshopsGrid.setExpanded(true);
         mediaGrid.setExpanded(true);
     }
 
@@ -103,7 +106,8 @@ public class SponsorsActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
                 Sponsor my = (Sponsor)handlingLikeABoss.getPlatinum().get(position);
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(my.getSite())));
+                if(!my.getSite().equals(""))
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(my.getSite())));
 
             }
         });
@@ -111,42 +115,56 @@ public class SponsorsActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
                 Sponsor my = (Sponsor)handlingLikeABoss.getGold().get(position);
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(my.getSite())));
+                if(!my.getSite().equals(""))
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(my.getSite())));
             }
         });
         silverGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
                 Sponsor my = (Sponsor)handlingLikeABoss.getSilver().get(position);
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(my.getSite())));
+                if(!my.getSite().equals(""))
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(my.getSite())));
             }
         });
         friendsGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
                 Sponsor my = (Sponsor)handlingLikeABoss.getFriends().get(position);
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(my.getSite())));
+                if(!my.getSite().equals(""))
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(my.getSite())));
             }
         });
         inkindGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
                 Sponsor my = (Sponsor)handlingLikeABoss.getInkind().get(position);
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(my.getSite())));
+                if(!my.getSite().equals(""))
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(my.getSite())));
+            }
+        });
+        workshopsGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View v,
+                                    int position, long id) {
+                Sponsor my = handlingLikeABoss.getWorkshops().get(position);
+                if(!my.getSite().equals(""))
+                    startActivity(new Intent(Intent.ACTION_VIEW,Uri.parse(my.getSite())));
             }
         });
         mediaGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
                 Sponsor my = (Sponsor)handlingLikeABoss.getMedia().get(position);
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(my.getSite())));
+                if(!my.getSite().equals(""))
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(my.getSite())));
             }
         });
         communityGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
                 Sponsor my = (Sponsor)handlingLikeABoss.getCommunity().get(position);
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(my.getSite())));
+                if(!my.getSite().equals(""))
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(my.getSite())));
             }
         });
     }

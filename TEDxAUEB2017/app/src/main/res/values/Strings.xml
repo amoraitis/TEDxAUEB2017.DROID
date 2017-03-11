@@ -32,4 +32,8 @@
     <string name="Media">Media Partners</string>
     <string name="BePart">Be a part of our Mosaic!\nContinue with Facebook to see the result!</string>
     <string name="Skip">Continue to the app     </string>
+    <string name="Workshops">Workshops</string>
+    <string name="ShareText">Share your experience with your friends!</string>
+    <string name="HelpingShare">Click "Share" button to save or share your photo</string>
+    <string name="Disclaimer">If you cannot see your image, \n go back and try again.</string>
 </resources>

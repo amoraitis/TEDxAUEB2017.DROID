@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -29,9 +30,11 @@ public class SpeakerActivity extends AppCompatActivity {
         TextView aboutspeaker = (TextView)findViewById(R.id.aboutspeaker);
         Button learnmore = (Button) findViewById(R.id.learnmore);
         this.setTitle(myspeaker.getName());
+        aboutspeaker.setMovementMethod(new ScrollingMovementMethod());
         GlideDrawableImageViewTarget mosaicViewTarget = new GlideDrawableImageViewTarget(largephoto);
         Glide.with(this).load(myspeaker.getLargeImg()).into(mosaicViewTarget);
         aboutspeaker.setText(myspeaker.getBio());
+
         learnmore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

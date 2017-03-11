@@ -1,6 +1,9 @@
 package com.tedxaueb.tedxaueb2017;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -11,6 +14,7 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -58,8 +62,6 @@ public class LoginActivity extends AppCompatActivity {
                                 bmOverlay = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), bitmap.getConfig());
                                 Canvas canvas = new Canvas(bmOverlay);
                                 canvas.drawBitmap(bitmap, new Matrix(), null);
-                                Toast.makeText(LoginActivity.this, "Width: "+mosaicBannerScaled.getWidth(),
-                                        Toast.LENGTH_LONG).show();
                                 canvas.drawBitmap(mosaicBannerScaled, 0.0f,bmOverlay.getHeight()-60, null);
                                 profpic.setImageBitmap(bmOverlay);
                                 share.setVisibility(View.VISIBLE);
@@ -86,7 +88,7 @@ public class LoginActivity extends AppCompatActivity {
                         File filepath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
 
                         // Create a new folder AndroidBegin in SD Card
-                        File dir = new File(filepath.getAbsolutePath() + "/TEDxAUEB2017/");
+                        File dir = new File(filepath.getAbsolutePath());
                         dir.mkdirs();
 
                         // Create a name for the saved image
@@ -107,14 +109,16 @@ public class LoginActivity extends AppCompatActivity {
                             bitmap.compress(Bitmap.CompressFormat.PNG, 100, output);
                             output.flush();
                             output.close();
-
                             // Locate the image to Share
-                            Uri uri = Uri.fromFile(file);
+                            Uri uri = getTheLatestPic();
+                            getApplicationContext().grantUriPermission("com.tedxaueb.tedxaueb2017",uri,Intent.FLAG_GRANT_READ_URI_PERMISSION);
 
                             // Pass the image into an Intnet
                             share.putExtra(Intent.EXTRA_STREAM, uri);
 
                             // Show the social share chooser list
+                            //final int REQUEST_CODE = 1;
+                            //startActivityForResult(share, REQUEST_CODE);
                             startActivity(Intent.createChooser(share, "Share your Mosaic with"));
 
                         } catch (Exception e) {
@@ -124,4 +128,29 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 });
             }
+    public Uri getTheLatestPic(){
+        String[] projection = new String[]{
+                MediaStore.Images.ImageColumns._ID,
+                MediaStore.Images.ImageColumns.DATA,
+                MediaStore.Images.ImageColumns.BUCKET_DISPLAY_NAME,
+                MediaStore.Images.ImageColumns.DATE_TAKEN,
+                MediaStore.Images.ImageColumns.MIME_TYPE
+        };
+        final Cursor cursor = getContext().getContentResolver()
+                .query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, projection, null,
+                        null, MediaStore.Images.ImageColumns.DATE_TAKEN + " DESC");
+        if (cursor.moveToFirst()) {
+            String imageLocation = cursor.getString(1);
+            File imageFile = new File(imageLocation);
+            if (imageFile.exists()) {   // TODO: is there a better way to do this?
+                return Uri.fromFile(imageFile);
+
+            }
+        }
+        return null;
     }
+
+    public Context getContext() {
+        return getApplicationContext();
+    }
+}

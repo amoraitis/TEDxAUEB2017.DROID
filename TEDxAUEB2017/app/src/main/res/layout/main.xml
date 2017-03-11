@@ -37,6 +37,7 @@
             android:scaleType="fitCenter"/>
 
         <ImageButton
+            android:id="@+id/programbtn"
             android:background="#faaf54"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -106,8 +107,7 @@
             android:text="@string/FontAwesomeInstagram"
             android:background="@color/orange"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/instagraml"/>
+            android:layout_height="wrap_content"/>
         <Button
             android:id="@+id/YoutubeButton"
             android:textColor="@color/YoutubeRed"

@@ -24,6 +24,7 @@
         android:layout_width="match_parent"
         android:background="@color/orange"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:layout_marginBottom="0dp"
         android:layout_marginLeft="0dp"
         android:layout_marginRight="0dp"
@@ -42,7 +43,7 @@
         android:id="@+id/platinumGrid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:numColumns="2"
+        android:numColumns="3"
         android:isScrollContainer="false"
         android:verticalSpacing="3dp"
         android:horizontalSpacing="3dp"
@@ -58,7 +59,7 @@
         android:id="@+id/goldGrid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:numColumns="2"
+        android:numColumns="3"
         android:verticalSpacing="3dp"
         android:isScrollContainer="false"
         android:horizontalSpacing="3dp"
@@ -78,8 +79,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:numColumns="3"
-        android:isScrollContainer="false"
         android:verticalSpacing="3dp"
+        android:isScrollContainer="false"
         android:horizontalSpacing="3dp"
         />
     <TextView
@@ -113,7 +114,8 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
     <ImageView
         android:id="@+id/academic"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_gravity="center_horizontal"
         android:background="@color/orange"
         android:layout_height="wrap_content"
         android:layout_marginBottom="0dp"
@@ -140,7 +142,7 @@
         android:numColumns="3"
         android:isScrollContainer="false"
         android:verticalSpacing="3dp"
-        android:horizontalSpacing="3dp"
+        android:horizontalSpacing="1dp"
         />
     <TextView
         android:text="@string/Community"
@@ -159,6 +161,26 @@
         android:numColumns="3"
         android:verticalSpacing="3dp"
         android:isScrollContainer="false"
+        android:horizontalSpacing="3dp"
+        />
+    <TextView
+        android:text="@string/Workshops"
+        android:background="@color/orange"
+        android:layout_width="fill_parent"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+    <Helpers.ExpandableHeightGridView
+
+        android:id="@+id/workshopsGrid"
+        android:isScrollContainer="false"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numColumns="3"
+        android:verticalSpacing="3dp"
         android:horizontalSpacing="3dp"
         />
     <TextView

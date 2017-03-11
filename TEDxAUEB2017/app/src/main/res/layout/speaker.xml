@@ -16,22 +16,20 @@
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
         android:scaleType="centerInside"/>
-    <ScrollView
-        android:id="@+id/scrollmytext"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:scrollbars="vertical"
-        android:fillViewport="true">
         <TextView
+            android:maxLines="10"
+            android:scrollbars="none"
             android:layout_width="fill_parent"
             android:id="@+id/aboutspeaker"
             android:background="@color/orange"
-            android:layout_height="fill_parent"
             android:adjustViewBounds="true"
             android:padding="0dp"
             android:layout_weight="1.0"
-            android:scaleType="fitCenter" />
-    </ScrollView>
+            android:scaleType="fitCenter"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textAlignment="center"
+            android:isScrollContainer="true"
+            android:layout_height="wrap_content" />
     <Button
         android:text="@string/LearnMore"
         android:id="@+id/learnmore"
