@@ -1,8 +1,9 @@
 package com.tedxaueb.tedxaueb2017;
 
+import android.animation.ObjectAnimator;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -12,26 +13,35 @@ import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.v4.app.ShareCompat;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.CycleInterpolator;
+import android.view.animation.DecelerateInterpolator;
+import android.view.animation.LinearInterpolator;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import com.bumptech.glide.load.resource.transcode.BitmapBytesTranscoder;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.logging.Logger;
 
 import Helpers.FontManager;
 
-import static com.microsoft.azure.mobile.crashes.Crashes.LOG_TAG;
+import static com.microsoft.azure.mobile.MobileCenter.LOG_TAG;
 
 /**
  * Created by tasos on 2/28/2017.
@@ -39,6 +49,7 @@ import static com.microsoft.azure.mobile.crashes.Crashes.LOG_TAG;
 
 public class LoginActivity extends AppCompatActivity {
     ImageView profpic;
+    ProgressBar shareprogress;
     Bitmap bmOverlay;
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -48,7 +59,12 @@ public class LoginActivity extends AppCompatActivity {
         FontManager.markAsIconContainer(findViewById(R.id.spreadtheword),iconFont);
         profpic=(ImageView) findViewById(R.id.profpic);
         Intent i = getIntent();
-        Uri profileURI = i.getParcelableExtra("ProfileURI");
+        shareprogress=(ProgressBar) findViewById(R.id.shareprogress);
+        ObjectAnimator progressAnimator = ObjectAnimator.ofInt(shareprogress, "progress", 100000, 0);
+        progressAnimator.setDuration(30000);
+        progressAnimator.setInterpolator(new AccelerateInterpolator());
+        progressAnimator.start();
+        final Uri profileURI = i.getParcelableExtra("ProfileURI");
         final Button share = (Button)findViewById(R.id.share);
         share.setVisibility(View.GONE);
         Picasso.with(LoginActivity.this)
@@ -56,7 +72,6 @@ public class LoginActivity extends AppCompatActivity {
                         .into(new Target() {
                             @Override
                             public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
-
                                 Bitmap mosaicBanner=BitmapFactory.decodeResource(getResources(),R.drawable.bannerforprofilepic500);
                                 Bitmap mosaicBannerScaled = Bitmap.createScaledBitmap(mosaicBanner,500,50,false);
                                 bmOverlay = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), bitmap.getConfig());
@@ -65,6 +80,7 @@ public class LoginActivity extends AppCompatActivity {
                                 canvas.drawBitmap(mosaicBannerScaled, 0.0f,bmOverlay.getHeight()-60, null);
                                 profpic.setImageBitmap(bmOverlay);
                                 share.setVisibility(View.VISIBLE);
+                                shareprogress.setVisibility(View.INVISIBLE);
                             }
 
                             @Override
@@ -81,7 +97,7 @@ public class LoginActivity extends AppCompatActivity {
                 ((Button) findViewById(R.id.share)).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
+                        shareprogress.setVisibility(View.VISIBLE);
                         FileOutputStream output;
                         Bitmap bitmap = ((BitmapDrawable) profpic.getDrawable()).getBitmap();
                         // Find the SD Card path
@@ -95,8 +111,7 @@ public class LoginActivity extends AppCompatActivity {
                         File file = new File(dir, "myMosaic.png");
 
                         try {
-                            if(!file.exists())
-                                Log.e(LOG_TAG,"file not exists");
+
                             // Share Intent
                             Intent share = new Intent(Intent.ACTION_SEND);
 
@@ -110,21 +125,30 @@ public class LoginActivity extends AppCompatActivity {
                             output.flush();
                             output.close();
                             // Locate the image to Share
-                            Uri uri = getTheLatestPic();
-                            getApplicationContext().grantUriPermission("com.tedxaueb.tedxaueb2017",uri,Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                            if (android.os.Build.VERSION.SDK_INT <= Build.VERSION_CODES.KITKAT) {
+                                Uri uri=null;
+                                if(!file.exists()){
+                                    uri = Uri.fromFile(file);
+                                }else{
+                                    uri = getTheLatestPic();
+                                }
 
-                            // Pass the image into an Intnet
-                            share.putExtra(Intent.EXTRA_STREAM, uri);
+                                getApplicationContext().grantUriPermission("com.tedxaueb.tedxaueb2017",uri,Intent.FLAG_GRANT_READ_URI_PERMISSION);
 
-                            // Show the social share chooser list
-                            //final int REQUEST_CODE = 1;
-                            //startActivityForResult(share, REQUEST_CODE);
-                            startActivity(Intent.createChooser(share, "Share your Mosaic with"));
+                                // Pass the image into an Intnet
+                                share.putExtra(Intent.EXTRA_STREAM, uri);
+
+                                // Show the social share chooser list
+                                startActivity(Intent.createChooser(share, "Share your Mosaic with"));
+                            }else{
+                                Toast.makeText(getContext(),"Share your image from your Gallery",Toast.LENGTH_LONG).show();
+                            }
 
                         } catch (Exception e) {
                             e.printStackTrace();
+                        }finally {
+                            shareprogress.setVisibility(View.GONE);
                         }
-
                     }
                 });
             }
@@ -152,5 +176,16 @@ public class LoginActivity extends AppCompatActivity {
 
     public Context getContext() {
         return getApplicationContext();
+    }
+
+
+    public Uri getShareImageUri(){
+        Drawable mDrawable = profpic.getDrawable();
+        Bitmap mBitmap = ((BitmapDrawable)mDrawable).getBitmap();
+
+        String path = MediaStore.Images.Media.insertImage(getContentResolver(),
+                mBitmap, "myMosaic", null);
+
+        return Uri.parse(path);
     }
 }
