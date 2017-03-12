@@ -12,6 +12,8 @@ import android.util.Base64;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.onesignal.OneSignal;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -21,6 +23,7 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        OneSignal.startInit(this).init();
         new Handler().postDelayed(new Runnable() {
 
             /*
