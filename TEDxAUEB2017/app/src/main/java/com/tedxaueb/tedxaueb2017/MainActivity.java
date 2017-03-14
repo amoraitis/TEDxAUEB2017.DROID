@@ -53,13 +53,13 @@ public class MainActivity extends Activity {
 
                 public void onSuccess(final LoginResult loginResult) {
                     userid = loginResult.getAccessToken().getUserId();
-                    if(!isFacebookInstalled()){
+                    //if(!isFacebookInstalled()){
                         //without Facebook app
                         profileUri = Uri.parse("https://graph.facebook.com/" + userid + "/picture?width=" + 400 +"&height=" + 400);
-                    }else {
+                    /*}else {
                         //with Facebook app
-                                profileUri = Profile.getCurrentProfile().getProfilePictureUri(400, 400);
-                    }
+                        profileUri = Profile.getCurrentProfile().getProfilePictureUri(400, 400);
+                    }*/
                     Intent branding = new Intent(MainActivity.this, LoginActivity.class);
                     branding.putExtra("ProfileURI", profileUri);
                     LoginManager.getInstance().logOut();

@@ -22,10 +22,10 @@ android {
     buildToolsVersion "25.0.2"
     defaultConfig {
         applicationId "com.tedxaueb.tedxaueb2017"
-        minSdkVersion 19
+        minSdkVersion 17
         targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         manifestPlaceholders = [onesignal_app_id: "82c534d1-8c6f-4de0-b973-53bcef949fe1",
                                 // Project number pulled from dashboard, local value is ignored.
