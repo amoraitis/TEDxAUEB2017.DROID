@@ -32,6 +32,9 @@ android {
                                 onesignal_google_project_number: "668140224194"]
     }
     buildTypes {
+        debug{
+            testCoverageEnabled true
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -63,3 +66,5 @@ dependencies {
     compile 'com.google.android.gms:play-services-analytics:10.2.0'
 }
 apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.android.application'
+apply plugin: 'jacoco-android'
